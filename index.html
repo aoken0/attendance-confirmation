@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>出欠確認</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family:'メイリオ', 'Meiryo', sans-serif;
+  background-color: #fefefe;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+main {
+  min-width: 60%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: start;
+  gap: 32px;
+}
+table {
+  border-collapse: collapse;
+}
+.seats td {
+  text-align: center;
+  vertical-align: top;
+  border: 1px solid #999;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 8px;
+}
+.seats .empty {
+  border: none;
+  cursor: default;
+}
+.seats .others {
+  border: none;
+  cursor: default;
+}
+.seats .attend {
+  background-color: #00ff7f;
+}
+.seats .absent {
+  background-color: #ff6347;
+}
+.seats .late {
+  background-color: #ffff00;
+}
+.attend-sheet {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: start;
+  gap: 0;
+}
+.attend-sheet table {
+  background-color: #fefefe;
+}
+.attend-sheet table tr:nth-child(odd) {
+  background-color: #e0eefa;
+}
+.attend-sheet table td {
+  padding-right: 8px;
+}
+</style>
+</head>
+<body>
+<!-- Insert seating chart below -->
+<main>
+<div class="seats"><h1>座席表</h1><table>
+
+</table>
+<table>
+<tr><td class="others">○○室</td><td class="empty"></td><td class="empty"></td><td class="others">スクリーン</td><td class="empty"></td><td class="empty"></td><td class="empty"></td></tr></table>
+<table>
+<tr><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td></tr>
+<tr><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td></tr>
+<tr><td onclick="handleClick(this)">00A0001<br>田中　太郎</td><td class="empty"></td><td onclick="handleClick(this)">00A0002<br>鈴木　花子</td><td class="empty"></td><td onclick="handleClick(this)">00A0003<br>高橋　一郎</td><td class="empty"></td><td onclick="handleClick(this)">00A0004<br>佐藤　美咲</td></tr>
+<tr><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td></tr>
+<tr><td onclick="handleClick(this)">10A0001<br>伊藤　健太</td><td class="empty"></td><td onclick="handleClick(this)">10A0002<br>渡辺　あゆみ</td><td class="empty"></td><td onclick="handleClick(this)">10A0003<br>山本　翔太</td><td class="empty"></td><td onclick="handleClick(this)">10A0004<br>中村　結衣</td></tr>
+<tr><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td></tr>
+<tr><td onclick="handleClick(this)">11A0001<br>小林　拓也</td><td class="empty"></td><td onclick="handleClick(this)">11A0002<br>加藤　恵子</td><td class="empty"></td><td onclick="handleClick(this)">11A0003<br>吉田　大輝</td><td class="empty"></td><td onclick="handleClick(this)">11A0004<br>山田　亜美</td></tr>
+<tr><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td></tr>
+<tr><td onclick="handleClick(this)">20A0001<br>佐々木　直人</td><td class="empty"></td><td onclick="handleClick(this)">20A0002<br>松本　陽菜</td><td class="empty"></td><td onclick="handleClick(this)">20A0003<br>井上　浩一</td><td class="empty"></td><td onclick="handleClick(this)">20A0004<br>木村　さくら</td></tr>
+<tr><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td></tr>
+<tr><td onclick="handleClick(this)">21A0001<br>橋本　蓮</td><td class="empty"></td><td onclick="handleClick(this)">21A0002<br>青山　遥</td><td class="empty"></td><td onclick="handleClick(this)">21A0003<br>森　誠</td><td class="empty"></td><td onclick="handleClick(this)">21A0004<br>斎藤　裕子</td></tr>
+</table></div>
+<div><h1>名簿</h1><div class="attend-sheet">
+<table>
+<tr align="left"><th>名前</th><th>学籍番号</th></tr>
+<tr><td>田中　太郎</td><td>00A0001</td></tr>
+<tr><td>鈴木　花子</td><td>00A0002</td></tr>
+<tr><td>高橋　一郎</td><td>00A0003</td></tr>
+<tr><td>佐藤　美咲</td><td>00A0004</td></tr>
+<tr><td>伊藤　健太</td><td>10A0001</td></tr>
+<tr><td>渡辺　あゆみ</td><td>10A0002</td></tr>
+<tr><td>山本　翔太</td><td>10A0003</td></tr>
+<tr><td>中村　結衣</td><td>10A0004</td></tr>
+<tr><td>小林　拓也</td><td>11A0001</td></tr>
+<tr><td>加藤　恵子</td><td>11A0002</td></tr>
+<tr><td>吉田　大輝</td><td>11A0003</td></tr>
+<tr><td>山田　亜美</td><td>11A0004</td></tr>
+<tr><td>佐々木　直人</td><td>20A0001</td></tr>
+<tr><td>松本　陽菜</td><td>20A0002</td></tr>
+<tr><td>井上　浩一</td><td>20A0003</td></tr>
+<tr><td>木村　さくら</td><td>20A0004</td></tr>
+<tr><td>橋本　蓮</td><td>21A0001</td></tr>
+<tr><td>青山　遥</td><td>21A0002</td></tr>
+<tr><td>森　誠</td><td>21A0003</td></tr>
+<tr><td>斎藤　裕子</td><td>21A0004</td></tr>
+</table>
+<table>
+<tr align="left"><th>出席</th></tr>
+<tr><td align="right" width="32px" id=00A0001>0</td></tr>
+<tr><td align="right" width="32px" id=00A0002>0</td></tr>
+<tr><td align="right" width="32px" id=00A0003>0</td></tr>
+<tr><td align="right" width="32px" id=00A0004>0</td></tr>
+<tr><td align="right" width="32px" id=10A0001>0</td></tr>
+<tr><td align="right" width="32px" id=10A0002>0</td></tr>
+<tr><td align="right" width="32px" id=10A0003>0</td></tr>
+<tr><td align="right" width="32px" id=10A0004>0</td></tr>
+<tr><td align="right" width="32px" id=11A0001>0</td></tr>
+<tr><td align="right" width="32px" id=11A0002>0</td></tr>
+<tr><td align="right" width="32px" id=11A0003>0</td></tr>
+<tr><td align="right" width="32px" id=11A0004>0</td></tr>
+<tr><td align="right" width="32px" id=20A0001>0</td></tr>
+<tr><td align="right" width="32px" id=20A0002>0</td></tr>
+<tr><td align="right" width="32px" id=20A0003>0</td></tr>
+<tr><td align="right" width="32px" id=20A0004>0</td></tr>
+<tr><td align="right" width="32px" id=21A0001>0</td></tr>
+<tr><td align="right" width="32px" id=21A0002>0</td></tr>
+<tr><td align="right" width="32px" id=21A0003>0</td></tr>
+<tr><td align="right" width="32px" id=21A0004>0</td></tr>
+</table>
+</div></div></main>
+<script>
+  const handleClick = (e) => {
+    stu_id = e.innerHTML.split('<br>')[0]
+    ele = document.getElementById(stu_id)
+
+    if (!e.classList.length || e.classList.contains('late')) {
+      e.classList.remove('late')
+      e.classList.add('attend')
+      ele.innerHTML = '1'
+      return
+    }
+    if (e.classList.contains('attend')) {
+      e.classList.remove('attend')
+      e.classList.add('absent')
+      ele.innerHTML = '0'
+      return
+    }
+    if (e.classList.contains('absent')) {
+      e.classList.remove('absent')
+      e.classList.add('late')
+      ele.innerHTML = '0.5'
+      return
+    }
+  }
+</script>
+</body>
+</html>

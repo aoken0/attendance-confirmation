@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>出欠確認</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family:'メイリオ', 'Meiryo', sans-serif;
+  background-color: #fefefe;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+main {
+  min-width: 60%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: start;
+  gap: 32px;
+}
+table {
+  border-collapse: collapse;
+}
+.seats td {
+  text-align: center;
+  vertical-align: top;
+  border: 1px solid #999;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 8px;
+}
+.seats .empty {
+  border: none;
+  cursor: default;
+}
+.seats .others {
+  border: none;
+  cursor: default;
+}
+.seats .attend {
+  background-color: #00ff7f;
+}
+.seats .absent {
+  background-color: #ff6347;
+}
+.seats .late {
+  background-color: #ffff00;
+}
+.attend-sheet {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: start;
+  gap: 0;
+}
+.attend-sheet table {
+  background-color: #fefefe;
+}
+.attend-sheet table tr:nth-child(odd) {
+  background-color: #e0eefa;
+}
+.attend-sheet table td {
+  padding-right: 8px;
+}
+</style>
+</head>
+<body>
+<!-- Insert seating chart below -->
+<main>
+</main>
+<script>
+  const handleClick = (e) => {
+    stu_id = e.innerHTML.split('<br>')[0]
+    ele = document.getElementById(stu_id)
+
+    if (!e.classList.length || e.classList.contains('late')) {
+      e.classList.remove('late')
+      e.classList.add('attend')
+      ele.innerHTML = '1'
+      return
+    }
+    if (e.classList.contains('attend')) {
+      e.classList.remove('attend')
+      e.classList.add('absent')
+      ele.innerHTML = '0'
+      return
+    }
+    if (e.classList.contains('absent')) {
+      e.classList.remove('absent')
+      e.classList.add('late')
+      ele.innerHTML = '0.5'
+      return
+    }
+  }
+</script>
+</body>
+</html>
