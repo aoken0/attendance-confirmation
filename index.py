@@ -3,6 +3,23 @@ import re
 
 def build_page(csv_path, output_path):
   df = pd.read_csv(csv_path, header=None)
+  # 頭から空行を削除
+  row_del = []
+  all_nan_rows = df.isnull().all(axis=1)
+  for i, is_nan in enumerate(all_nan_rows):
+    if is_nan:
+      row_del.append(i)
+    else:
+      break
+  # 末尾から空行を削除
+  n = len(all_nan_rows) - 1
+  for i, is_nan in enumerate(reversed(all_nan_rows)):
+    if is_nan:
+      row_del.append(n - i)
+    else:
+      break
+  # 両端の空行削除
+  df = df.drop(df.index[row_del])
   # 頭から空列を削除
   col_del = []
   for col in df.columns:
@@ -15,7 +32,8 @@ def build_page(csv_path, output_path):
       col_del.append(col)
     else: break
   # 両端の空列削除
-  df = df.drop(columns=col_del).fillna("")
+  df = df.drop(columns=col_del)
+  df = df.fillna("")
   
   # 座席表
   html_seats = '<div class="seats"><h1>座席表</h1><table>\n'
