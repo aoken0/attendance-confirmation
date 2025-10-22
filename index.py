@@ -1,8 +1,8 @@
 import pandas as pd
 import re
 
-if __name__ == '__main__':
-  df = pd.read_csv('./csv/template.csv', header=None)
+def build_page(csv_path, output_path):
+  df = pd.read_csv(csv_path, header=None)
   # 頭から空列を削除
   col_del = []
   for col in df.columns:
@@ -75,5 +75,8 @@ if __name__ == '__main__':
   # 座席表，出欠表を挿入
   html_content = html_seats + '<div><h1>名簿</h1><div class="attend-sheet">\n' + html_sheet1 + html_sheet2 + '</div></div>'
   html.insert(insert_position, html_content)
-  with open('./index.html', 'w', encoding='utf-8') as f:
+  with open(output_path, 'w', encoding='utf-8') as f:
     f.writelines(html)
+
+if __name__ == '__main__':
+  build_page('./csv/template.csv', './template.html')

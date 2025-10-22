@@ -1,2 +1,3 @@
 csv/*
 !template.csv
+*.html
