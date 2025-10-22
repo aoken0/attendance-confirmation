@@ -1,3 +1,4 @@
 csv/*
 !template.csv
 *.html
+*copy*
